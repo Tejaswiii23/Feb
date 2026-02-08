@@ -1,0 +1,10 @@
+class Solution:
+    def isBalanced(self, root: Optional[TreeNode]) -> bool:
+        def f(n):
+            if not n:return True,0
+            a,b=f(n.left)
+            c,d=f(n.right)
+            if not a or not c or abs(b-d)>1:return False,0
+            return True,1+max(b,d)
+        return f(root)[0]
+        
