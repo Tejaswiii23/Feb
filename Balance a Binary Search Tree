@@ -1,0 +1,17 @@
+class Solution:
+ def balanceBST(self,root):
+  vals=[]
+  def inorder(n):
+   if not n:return
+   inorder(n.left)
+   vals.append(n.val)
+   inorder(n.right)
+  inorder(root)
+  def build(l,r):
+   if l>r:return None
+   m=(l+r)//2
+   n=TreeNode(vals[m])
+   n.left=build(l,m-1)
+   n.right=build(m+1,r)
+   return n
+  return build(0,len(vals)-1)
