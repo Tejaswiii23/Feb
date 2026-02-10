@@ -1,0 +1,22 @@
+class Solution:
+    def longestBalanced(self,nums):
+        even={};odd={}
+        diff=0
+        first={0:-1}
+        ans=0
+        for i,x in enumerate(nums):
+            if x%2==0:
+                p=even.get(x,0)
+                even[x]=p+1
+                if p==0:
+                    diff+=1
+            else:
+                p=odd.get(x,0)
+                odd[x]=p+1
+                if p==0:
+                    diff-=1
+            if diff in first:
+                ans=max(ans,i-first[diff])
+            else:
+                first[diff]=i
+        return ans
