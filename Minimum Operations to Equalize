@@ -1,0 +1,13 @@
+class Solution:
+    def minOperations(self, s: str, k: int) -> int:
+        n0 = s.count('0')
+        if n0 == 0:
+            return 0
+        if k % 2 == 0:
+            if n0 % 2 == 0:
+                return 1
+            else:
+                return -1
+        if n0 % 2 == 1:
+            return 1
+        return 2
